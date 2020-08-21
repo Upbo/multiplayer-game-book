@@ -1,6 +1,3 @@
-#include <WinSock2.h>
-#include <stdint.h>
-#include <memory>	
 // 소켓 래핑 클래스
 class SocketAddress
 {
