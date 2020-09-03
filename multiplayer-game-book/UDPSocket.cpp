@@ -43,6 +43,7 @@ int UDPSocket::ReceiveFrom(void* inBuffer, int inMaxLength, SocketAddress& outFr
 // 논블로킹 모드, 블로킹을 거는 대신 -1을 즉시 리턴 
 // 소켓 동작이 원래 블로킹되었어야 하는데 그러지 않고 빠져나왔다는 의미의 에러코드 리턴
 // 실제 에러는 아니므로 다르게 처리해야함
+// 논블로킹 모드로 설정하면 작업이 완료되기 전까지 블로킹을 걸던 함수들이 즉시 리턴
 int UDPSocket::SetNonBlockingMode(bool inShouldBeNonBlocking)
 {
 #if _WIN32
