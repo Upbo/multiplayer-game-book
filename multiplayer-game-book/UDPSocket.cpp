@@ -40,6 +40,27 @@ int UDPSocket::ReceiveFrom(void* inBuffer, int inMaxLength, SocketAddress& outFr
 	}
 }
 
+// 논블로킹 모드, 블로킹을 거는 대신 -1을 즉시 리턴 
+// 소켓 동작이 원래 블로킹되었어야 하는데 그러지 않고 빠져나왔다는 의미의 에러코드 리턴
+// 실제 에러는 아니므로 다르게 처리해야함
+int UDPSocket::SetNonBlockingMode(bool inShouldBeNonBlocking)
+{
+#if _WIN32
+	u_long arg = inShouldBeNonBlocking ? 1 : 0;
+	int result = ioctlsocket(mSocket, FIONBIO, &arg);
+#else
+	int flags = fcntl(mSocket, F_GETFL, 0);
+	flags = inShouldBeNonBlocking ? (flags | O_NONBLOCK) : (flags & ~O_NONBLOCK);
+	int result = fcntl(mSocket, F_SETFL, flags);
+#endif
+	if (result == SOCKET_ERROR)
+	{
+		SocketUtil::ReportError("UDPSocket::SetNonBlockingMode");
+		return -SocketUtil::GetLastError();
+	}
+	return NO_ERROR;
+}
+
 UDPSocket::~UDPSocket()
 {
 	closesocket(mSocket);
