@@ -43,3 +43,28 @@ void SocketUtil::ReportError(const char* inOperationDesc)
 
 #endif
 }
+
+int SocketUtil::GetLastError()
+{
+#if _WIN32
+	return WSAGetLastError();
+#else
+	return errno;
+#endif
+
+}
+
+UDPSocketPtr SocketUtil::CreateUDPSocket(SocketAddressFamily inFamily)
+{
+	SOCKET s = socket(inFamily, SOCK_DGRAM, IPPROTO_UDP);
+	if (s != INVALID_SOCKET)
+	{
+		// 소켓 생성 동작이 성공해야만 객체를 리턴
+		return UDPSocketPtr(new UDPSocket(s));
+	}
+	else
+	{
+		ReportError("SocketUtil::CreateUDPSocket");
+		return nullptr;
+	}
+}
