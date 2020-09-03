@@ -49,5 +49,8 @@ using std::unordered_set;
 class RoboCat;
 class GameObject;
 
+#include "StringUtils.h"
 #include "SocketAddress.h"
 #include "SocketAddressFactory.h"
+#include "UDPSocket.h"
+#include "SocketUtil.h"
