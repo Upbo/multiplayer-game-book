@@ -12,7 +12,7 @@ class SocketUtil
 	static int GetLastError();
 
 	static UDPSocketPtr CreateUDPSocket(SocketAddressFamily inFamily);
-
+	static TCPSocketPtr CreateTCPSocket(SocketAddressFamily inFamily);
 	private:
 	
 
