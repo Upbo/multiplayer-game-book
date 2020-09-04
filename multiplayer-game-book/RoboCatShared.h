@@ -55,3 +55,5 @@ class GameObject;
 #include "UDPSocket.h"
 #include "TCPSocket.h"
 #include "SocketUtil.h"
+
+#include "MemoryStream.h"
