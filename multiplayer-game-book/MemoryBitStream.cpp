@@ -46,3 +46,26 @@ void OutputMemoryBitStream::WriteBits(const void* inData, size_t inBitCount)
 		WriteBits(*srcByte, inBitCount);
 	}
 }
+
+void OutputMemoryBitStream::ReallocBuffer(uint32_t inNewBitCapacity)
+{
+	if (mBuffer == nullptr)
+	{
+		//just need to memset on first allocation
+		mBuffer = static_cast<char*>(std::malloc(inNewBitCapacity >> 3));
+		memset(mBuffer, 0, inNewBitCapacity >> 3);
+	}
+	else
+	{
+		//need to memset, then copy the buffer
+		char* tempBuffer = static_cast<char*>(std::malloc(inNewBitCapacity >> 3));
+		memset(tempBuffer, 0, inNewBitCapacity >> 3);
+		memcpy(tempBuffer, mBuffer, mBitCapacity >> 3);
+		std::free(mBuffer);
+		mBuffer = tempBuffer;
+	}
+
+	//handle realloc failure
+	//...
+	mBitCapacity = inNewBitCapacity;
+}
