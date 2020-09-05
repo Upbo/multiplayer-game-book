@@ -36,6 +36,12 @@
     <ClCompile Include="MemoryStream.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="MemoryBitStream.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SocketAddress.h">
@@ -63,6 +69,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MemoryStream.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryBitStream.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ByteSwap.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
