@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MemoryStream.cpp" />
     <ClCompile Include="SocketAddress.cpp" />
     <ClCompile Include="SocketAddressFactory.cpp" />
     <ClCompile Include="SocketUtil.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="UDPSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MemoryStream.h" />
     <ClInclude Include="RoboCatPCH.h" />
     <ClInclude Include="RoboCatShared.h" />
     <ClInclude Include="SocketAddress.h" />
