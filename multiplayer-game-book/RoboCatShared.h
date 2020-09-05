@@ -57,3 +57,4 @@ class GameObject;
 #include "SocketUtil.h"
 
 #include "MemoryStream.h"
+#include "MemoryBitStream.h"
